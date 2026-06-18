@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-nina-blue: #1a4b8c;
+  --color-nina-navy: #0e2d5a;
+  --color-nina-sky: #4a7bc5;
+  --color-nina-muted: #9bb6dd;
+  --color-nina-cream: #faf8f5;
+  --color-nina-sand: #f1ece2;
+  --color-nina-body: #3a5680;
+
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-hanken), system-ui, sans-serif;
+}
+
+:root {
+  --background: #faf8f5;
+  --foreground: #3a5680;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Utility classes */
+.text-balance {
+  text-wrap: balance;
+}
+
+.section-padding {
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 7.375rem;
+    padding-bottom: 7.375rem;
+  }
+}
+
+.container-narrow {
+  max-width: 71.25rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #4a7bc5;
+}
+
+.meander-top {
+  background: url(/assets/meander-blue.png) repeat-x top;
+  background-size: auto 18px;
+  padding-top: 36px;
+  opacity: 0.6;
+}
+
+.meander-top-cream {
+  background: url(/assets/meander-cream.png) repeat-x top;
+  background-size: auto 18px;
+  padding-top: 36px;
+  opacity: 0.3;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: #4a7bc5;
+  color: #faf8f5;
+}
+
+/* Heading defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
