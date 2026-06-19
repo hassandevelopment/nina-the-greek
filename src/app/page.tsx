@@ -124,7 +124,7 @@ export default function Home() {
 
             {/* Overlay card */}
             <div className="relative z-10 py-16 px-8 md:px-16 text-center text-nina-cream">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-2xl mx-auto mb-10 text-left">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-2xl mx-auto mb-10 text-center">
                 <div>
                   <h3 className="font-sans text-xs uppercase tracking-[.3em] text-nina-muted mb-3">
                     Address
