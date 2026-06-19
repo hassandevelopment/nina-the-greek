@@ -16,9 +16,6 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-nina-navy/80 to-nina-navy/60" />
 
         <div className="relative z-10 text-center px-6 max-w-3xl">
-          <p className="eyebrow text-nina-cream/80 mb-8">
-            Saar &middot; Kingdom of Bahrain
-          </p>
           <Image
             src="/assets/logo-cream.png"
             alt="Nina The Greek"
