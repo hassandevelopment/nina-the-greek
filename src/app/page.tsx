@@ -1,50 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const signatureDishes = [
-  {
-    name: "Shrimp Saganaki",
-    description: "Succulent shrimp simmered in a rich tomato and feta sauce, finished with a touch of ouzo.",
-    price: "BD 5.200",
-  },
-  {
-    name: "Beef Souvlaki",
-    description: "Tender marinated beef skewers, chargrilled and served with tzatziki, warm pita, and fresh herbs.",
-    price: "BD 12.400",
-  },
-  {
-    name: "Mushroom Short Ribs",
-    description: "Slow-braised short ribs with wild mushroom ragu, creamy polenta, and a red wine reduction.",
-    price: "BD 14.500",
-  },
-  {
-    name: "Deconstructed Baklava",
-    description: "Crispy phyllo shards layered with pistachio cream, honey syrup, and rose-scented ice cream.",
-    price: "BD 3.500",
-  },
-  {
-    name: "Seafood Orzo",
-    description: "Toasted orzo tossed with shrimp, calamari, mussels, and a saffron-tomato broth.",
-    price: "BD 8.000",
-  },
-  {
-    name: "Burrata",
-    description: "Creamy burrata served with heirloom tomatoes, basil oil, and crusty bread.",
-    price: "BD 5.500",
-  },
-];
-
-const menuCategories = [
-  { number: "01", name: "Mezedes", examples: "Hummus, Tzatziki, Saganaki" },
-  { number: "02", name: "Salads", examples: "Horiatiki, Fattoush" },
-  { number: "03", name: "Appetizers", examples: "Shrimp Saganaki, Burrata" },
-  { number: "04", name: "Main Course", examples: "Souvlaki, Seafood Orzo" },
-  { number: "05", name: "Sandwiches", examples: "Gyro, Lamb Wrap" },
-  { number: "06", name: "Sides", examples: "Greek Fries, Grilled Vegetables" },
-  { number: "07", name: "Desserts", examples: "Baklava, Loukoumades" },
-  { number: "08", name: "Beverages", examples: "Greek Coffee, Fresh Juices" },
-];
-
 export default function Home() {
   return (
     <>
@@ -103,74 +59,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Signature Dishes ── */}
-      <section className="meander-bottom section-padding bg-nina-sand">
-        <div className="container-narrow">
-          <div className="text-center mb-14">
-            <p className="eyebrow mb-4">From Our Kitchen</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-nina-blue">
-              Signature Dishes
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10 max-w-4xl mx-auto">
-            {signatureDishes.map((dish) => (
-              <div key={dish.name} className="flex justify-between items-start gap-4">
-                <div>
-                  <h3 className="font-serif text-xl font-bold text-nina-blue mb-1">
-                    {dish.name}
-                  </h3>
-                  <p className="font-serif italic text-nina-body text-sm leading-relaxed">
-                    {dish.description}
-                  </p>
-                </div>
-                <span className="font-sans text-sm text-nina-body whitespace-nowrap pt-1">
-                  {dish.price}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-14">
-            <Link
-              href="/menu"
-              className="inline-block font-serif text-nina-blue hover:text-nina-navy transition-opacity text-lg"
-            >
-              Full Menu &rarr;
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ── The Menu ── */}
-      <section className="section-padding bg-nina-navy text-nina-cream">
+      <section className="bg-nina-navy text-nina-cream pt-24 md:pt-28 pb-24 md:pb-28">
         <div className="container-narrow">
-          <div className="text-center mb-14">
+          <div className="text-center mb-12 md:mb-14">
             <p className="eyebrow !text-nina-muted mb-4">The Menu</p>
             <h2 className="font-serif text-3xl md:text-4xl font-light text-nina-cream">
               Explore Our Offerings
             </h2>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-8 max-w-4xl mx-auto">
-            {menuCategories.map((cat) => (
-              <div key={cat.number} className="flex gap-4">
-                <span className="font-sans text-sm text-nina-muted mt-1">
-                  {cat.number}
-                </span>
-                <div>
-                  <h3 className="font-serif text-xl font-medium text-nina-cream mb-1">
-                    {cat.name}
-                  </h3>
-                  <p className="text-sm text-nina-muted leading-relaxed">
-                    {cat.examples}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+        <Image
+          src="/assets/menu-page-1.png"
+          alt="Nina The Greek menu"
+          width={3491}
+          height={2522}
+          sizes="100vw"
+          className="block w-full h-auto"
+          priority={false}
+        />
 
-          <div className="text-center mt-14">
+        <div className="container-narrow">
+          <div className="text-center mt-12 md:mt-14">
             <Link
               href="/menu"
               className="inline-block font-serif text-nina-cream/80 hover:text-nina-cream transition-opacity text-lg"
