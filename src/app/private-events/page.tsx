@@ -716,6 +716,7 @@ export default function PrivateEventsPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   function updateFormData(updates: Partial<FormData>) {
     setFormData((prev) => ({ ...prev, ...updates }));
@@ -761,6 +762,7 @@ export default function PrivateEventsPage() {
   }
 
   async function handleSubmit() {
+    setSubmitting(true);
     const { error } = await supabase.from("event_requests").insert({
       event_type: formData.eventType,
       guest_count: formData.guestCount,
@@ -778,6 +780,7 @@ export default function PrivateEventsPage() {
 
     if (error) {
       alert("There was an error submitting your request. Please try again.");
+      setSubmitting(false);
       return;
     }
 
@@ -858,10 +861,16 @@ export default function PrivateEventsPage() {
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  disabled={!canAdvance()}
-                  className="uppercase tracking-[.2em] text-xs font-semibold px-10 py-4 bg-nina-blue text-nina-cream hover:bg-nina-navy disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nina-cream active:bg-nina-navy"
+                  disabled={!canAdvance() || submitting}
+                  className="inline-flex items-center justify-center gap-2 uppercase tracking-[.2em] text-xs font-semibold px-10 py-4 bg-nina-blue text-nina-cream hover:bg-nina-navy disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nina-cream active:bg-nina-navy"
                 >
-                  Submit Inquiry
+                  {submitting && (
+                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
+                      <path className="opacity-90" fill="currentColor" d="M12 2a10 10 0 0 1 10 10h-3a7 7 0 0 0-7-7V2z" />
+                    </svg>
+                  )}
+                  {submitting ? "Submitting…" : "Submit Inquiry"}
                 </button>
               )}
             </div>

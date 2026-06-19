@@ -26,6 +26,7 @@ const labelClass = "block text-sm font-medium text-nina-blue mb-2";
 
 export default function CareersPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [cvFileName, setCvFileName] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -61,6 +62,7 @@ export default function CareersPage() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setSubmitting(true);
 
     const { error } = await supabase.from("job_applications").insert({
       first_name: formData.firstName,
@@ -87,6 +89,7 @@ export default function CareersPage() {
 
     if (error) {
       alert("There was an error submitting your application. Please try again.");
+      setSubmitting(false);
       return;
     }
 
@@ -485,9 +488,16 @@ export default function CareersPage() {
             <div className="flex flex-col md:flex-row items-center gap-4">
               <button
                 type="submit"
-                className="bg-nina-blue text-nina-cream hover:bg-nina-navy uppercase tracking-[.2em] text-xs font-semibold px-10 py-4 w-full md:w-auto transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nina-blue active:bg-nina-navy"
+                disabled={submitting}
+                className="inline-flex items-center justify-center gap-2 bg-nina-blue text-nina-cream hover:bg-nina-navy disabled:opacity-40 disabled:cursor-not-allowed uppercase tracking-[.2em] text-xs font-semibold px-10 py-4 w-full md:w-auto transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nina-blue active:bg-nina-navy"
               >
-                Submit Application
+                {submitting && (
+                  <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
+                    <path className="opacity-90" fill="currentColor" d="M12 2a10 10 0 0 1 10 10h-3a7 7 0 0 0-7-7V2z" />
+                  </svg>
+                )}
+                {submitting ? "Submitting…" : "Submit Application"}
               </button>
               <p className="text-xs text-nina-blue/50">
                 <span className="text-nina-sky">*</span> Required fields

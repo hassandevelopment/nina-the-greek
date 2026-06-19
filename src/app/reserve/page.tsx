@@ -20,6 +20,7 @@ const inputClass =
 
 export default function BookPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -41,6 +42,7 @@ export default function BookPage() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setSubmitting(true);
     const { error } = await supabase.from("reservations").insert({
       name: formData.name,
       phone: formData.phone,
@@ -52,6 +54,7 @@ export default function BookPage() {
     });
     if (error) {
       alert("There was an error submitting your reservation. Please try again or call us directly.");
+      setSubmitting(false);
       return;
     }
     setSubmitted(true);
@@ -223,9 +226,16 @@ export default function BookPage() {
 
                   <button
                     type="submit"
-                    className="bg-nina-blue text-nina-cream hover:bg-nina-navy uppercase tracking-[.2em] text-xs font-semibold px-10 py-4 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nina-blue active:bg-nina-navy"
+                    disabled={submitting}
+                    className="inline-flex items-center justify-center gap-2 bg-nina-blue text-nina-cream hover:bg-nina-navy disabled:opacity-40 disabled:cursor-not-allowed uppercase tracking-[.2em] text-xs font-semibold px-10 py-4 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nina-blue active:bg-nina-navy"
                   >
-                    Request Reservation
+                    {submitting && (
+                      <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
+                        <path className="opacity-90" fill="currentColor" d="M12 2a10 10 0 0 1 10 10h-3a7 7 0 0 0-7-7V2z" />
+                      </svg>
+                    )}
+                    {submitting ? "Submitting…" : "Request Reservation"}
                   </button>
                 </form>
               )}

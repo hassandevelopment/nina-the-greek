@@ -19,6 +19,7 @@ const hanken = Hanken_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nina-the-greek.vercel.app"),
   title: {
     default: "Nina The Greek | Greek Restaurant in Saar, Bahrain",
     template: "%s | Nina The Greek",
@@ -39,13 +40,13 @@ export const metadata: Metadata = {
     title: "Nina The Greek | Greek Restaurant in Saar, Bahrain",
     description:
       "Authentic Greek cuisine in the heart of Saar, Bahrain. Fresh Mediterranean flavours, warm hospitality, and a menu crafted with passion.",
-    url: "https://ninathegreek.com",
+    url: "https://nina-the-greek.vercel.app",
     siteName: "Nina The Greek",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Nina The Greek Restaurant",
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
     title: "Nina The Greek | Greek Restaurant in Saar, Bahrain",
     description:
       "Authentic Greek cuisine in the heart of Saar, Bahrain. Fresh Mediterranean flavours and warm hospitality.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -71,8 +72,8 @@ const jsonLd = {
   name: "Nina The Greek",
   description:
     "Authentic Greek cuisine in the heart of Saar, Bahrain. Fresh Mediterranean flavours, warm hospitality, and a menu crafted with passion.",
-  url: "https://ninathegreek.com",
-  image: "/og-image.jpg",
+  url: "https://nina-the-greek.vercel.app",
+  image: "https://nina-the-greek.vercel.app/og-image.png",
   telephone: "+973 1732 2777",
   address: {
     "@type": "PostalAddress",
