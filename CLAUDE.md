@@ -44,15 +44,16 @@ Website for **Nina The Greek**, an authentic Greek restaurant in Saar, Bahrain. 
 ### Components
 - **Buttons:** Square (no border-radius). Solid blue on light bg, ghost (1px cream border) on dark bg.
 - **Transitions:** Never use `transition-all`. Always list specific properties.
-- **Meander borders:** PNG tiles (`meander-blue.png` / `meander-cream.png`), repeat-x, `background-size: auto 18px`. Opacity 0.6 on cream, 0.3 on navy. **Do NOT replace with SVGs** — user rejected that approach.
+- **Meander borders:** PNG tiles (`meander-blue.png` / `meander-cream.png`), repeat-x, `background-size: auto 18px`. Opacity 0.6 on cream, 0.3 on navy. **Do NOT replace with SVGs** — user rejected that approach. The footer carries its own top meander, so sections directly above the footer should NOT add a `meander-bottom` (avoids doubled borders).
 - **Hairline borders:** `rgba(26,75,140,.16)`
+- **Olive branch accents:** Hand-painted blue watercolor branches (`olive-branch-1/2/3.png`, extracted from `menu-page-1.png` via white→transparent alpha mask) used as subtle corner watermarks on **light sections only** (cream/sand/white) — never on navy/dark. CSS classes in `globals.css`: corner classes `olive-tl/tr/bl/br` (use `::before`) and `olive-tl-2/tr-2/bl-2/br-2` (use `::after`, for opposing-corner pairs / coexisting with a `meander-bottom`). Variant classes `olive-v2`/`olive-v3` swap the source image; transforms mirror/flip for variety. Opacity ~0.14 desktop / ~0.11 mobile (shrunk, NOT hidden, on small screens). Parent section gets `position: relative`; the inner content container gets `relative` so text stays above the watermark.
 
 ### Content
 - Price format: `BD x.xxx` (3 decimals, BD prefix)
 - VAT note: "Prices inclusive of 10% VAT & 5% government levy"
 - Restaurant hours: Open Daily, 3:00 PM – 11:00 PM
 - Phone: 1732 2777 (tel link: +97317322777)
-- Address: Avenue 57, Maqabah, Saar, Bahrain
+- Address: Avenue 57, Maqabah, Saar, Bahrain — rendered as a link to the Google Maps location (`https://www.google.com/maps/search/?api=1&query=Nina%20The%20Greek...`) on homepage (with "Get Directions" CTA), about, reserve, and footer
 - Instagram: @nina_the_greek
 
 ---
@@ -63,12 +64,12 @@ Website for **Nina The Greek**, an authentic Greek restaurant in Saar, Bahrain. 
 src/
   app/
     layout.tsx            # Root layout, font loading, Schema.org JSON-LD
-    page.tsx              # Homepage — hero, welcome, menu preview, CTAs
-    globals.css           # Theme tokens, meander classes, utilities
-    about/page.tsx        # Our Story (server component)
+    page.tsx              # Homepage — hero (logo only, no eyebrow), Private Events, Visit ("Find Us in Saar" w/ maps CTA)
+    globals.css           # Theme tokens, meander classes, olive branch classes, utilities
+    about/page.tsx        # Our Story (server component) — ends at Values section (no Contact section; footer covers it)
     menu/
       layout.tsx          # SEO metadata
-      page.tsx            # Full menu, Gusto-style (client component)
+      page.tsx            # Header section + full-width menu image (menu-page-1.png), server component
     private-events/
       layout.tsx          # SEO metadata
       page.tsx            # Multi-step event inquiry form → Supabase
@@ -80,20 +81,24 @@ src/
       layout.tsx          # SEO metadata
       page.tsx            # Reservation form → Supabase
   components/
-    Header.tsx            # Scroll-aware sticky nav (transparent → blurred cream)
-    Footer.tsx            # Site footer with meander border, nav, info grid
+    Header.tsx            # Sticky nav. Transparent (cream text) ONLY over the homepage hero; every other page renders solid blurred-cream (blue text) from load. Derived `solid = scrolled || !isHome`. Logo uses intrinsic 805x790 + CSS h-9 w-auto + priority.
+    Footer.tsx            # Site footer with top meander border, nav, info grid (Location/Hours/Connect — canonical contact block)
   data/
-    menu.ts               # Menu data (categories, items, prices)
+    menu.ts               # Menu data (categories, items, prices) — still the source of truth; menu page now shows the image, not this data
   lib/
     supabase.ts           # Supabase client init
 public/assets/
   hero-watercolor.png     # Blue monochrome painting for hero bg
   logo-blue.png           # Full wordmark (light bg)
   logo-cream.png          # Full wordmark (dark bg)
-  mark-blue.png           # Medallion mark (light bg)
-  mark-cream.png          # Medallion mark (dark bg)
-  meander-blue.png        # Greek key tile (light bg), 36x24 RGBA
-  meander-cream.png       # Greek key tile (dark bg), 36x24 RGBA
+  mark-blue.png           # Medallion mark (light bg), 805x790 RGBA
+  mark-cream.png          # Medallion mark (dark bg), 805x790 RGBA
+  meander-blue.png        # Greek key tile (light bg)
+  meander-cream.png       # Greek key tile (dark bg)
+  menu-page-1.png         # Physical menu artwork (3491x2522) — shown on /menu; also source for olive branches
+  olive-branch-1.png      # Watercolor olive branch accent (horizontal full branch)
+  olive-branch-2.png      # Watercolor olive branch accent (lush angled branch)
+  olive-branch-3.png      # Watercolor olive branch accent (leafy branch w/ olives)
 ```
 
 ---
@@ -126,13 +131,16 @@ name, phone, email, preferred_date, preferred_time, party_size, special_requests
 
 1. All 7 pages built and styled to the design system
 2. All 3 forms wired to Supabase (private-events, careers, reserve)
-3. Header with scroll-aware behavior (transparent → blurred cream bg)
-4. Footer with meander accent, nav, info grid
+3. Header: transparent over homepage hero, solid blurred-cream (nav visible) on all other pages from load
+4. Footer with meander accent, nav, info grid (canonical contact block)
 5. Schema.org structured data on homepage
-6. SEO metadata on all pages
+6. SEO metadata on all pages + sitemap, robots.txt, branded favicon, OpenGraph image, custom 404
 7. Git repo initialized, pushed to GitHub
 8. Deployed to Vercel (auto-deploys on push)
 9. Brand assets integrated (logos, meander tiles, hero watercolor)
+10. Menu page = full-width physical menu image (`menu-page-1.png`); homepage menu image section removed
+11. Olive branch watercolor accents on all light sections (desktop + mobile)
+12. Address links to Google Maps; private-events stepper redesigned (minimal dot/hairline)
 
 ---
 
@@ -147,19 +155,13 @@ name, phone, email, preferred_date, preferred_time, party_size, special_requests
 ### Medium Priority
 - **Google Business Profile** — set up and link to website
 - **Google Analytics / Search Console** — not yet connected
-- **Sitemap** — Next.js can auto-generate, not yet configured
-- **robots.txt** — not yet configured
-- **Favicon** — using default Next.js favicon, needs restaurant branding
-- **Social meta images** — OpenGraph images not set (needs branded preview card)
+- **Exact Maps location** — address links use a Maps search query (name + address); swap in the real place/share URL or Place ID when available
 - **Mobile testing** — built mobile-first but needs real device QA
-- **Form validation** — currently uses basic HTML validation, could add better UX
 
 ### Low Priority / Nice to Have
 - **Lightbox on gallery** — image modal for full-size viewing when real photos arrive
-- **Menu search/filter** — not needed now with current menu size
 - **Animations** — subtle scroll-triggered reveals (only animate transform + opacity)
 - **Loading states** — form submit buttons don't show loading spinner
-- **404 page** — custom styled to match brand
 - **WhatsApp integration** — common in Bahrain for restaurant bookings
 
 ---
@@ -168,10 +170,10 @@ name, phone, email, preferred_date, preferred_time, party_size, special_requests
 
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://hhykbkdxsiclfjbrklyr.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=<in .env.local>
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoeWtia2R4c2ljbGZqYnJrbHlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk0NTUzMDUsImV4cCI6MjA5NTAzMTMwNX0.2DmUSbQGLL1DtR_mcZ2He8yVYlhAxQAmEMYVKaksAlc
+
 ```
 
-Copy `.env.local.example` and fill in the anon key.
 
 ---
 
