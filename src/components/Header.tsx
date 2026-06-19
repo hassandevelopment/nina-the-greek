@@ -55,9 +55,10 @@ export default function Header() {
           <Image
             src={solid ? "/assets/mark-blue.png" : "/assets/mark-cream.png"}
             alt="Nina The Greek medallion"
-            width={36}
-            height={36}
-            className="transition-opacity duration-300"
+            width={805}
+            height={790}
+            priority
+            className="block h-9 w-auto transition-opacity duration-300"
           />
           <span
             className={`font-serif text-xl md:text-2xl tracking-wide transition-colors duration-300 ${

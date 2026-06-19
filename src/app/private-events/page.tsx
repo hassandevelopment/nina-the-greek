@@ -105,48 +105,50 @@ const STEP_LABELS = ["Event Type", "Details", "Requests", "Contact", "Confirm"];
 
 function ProgressIndicator({ currentStep }: { currentStep: number }) {
   return (
-    <div className="flex items-center justify-center mb-12" aria-label="Form progress">
+    <div
+      className="flex items-start justify-center mb-12"
+      aria-label="Form progress"
+    >
       {STEP_LABELS.map((label, index) => {
         const stepNumber = index + 1;
         const isCompleted = stepNumber < currentStep;
         const isActive = stepNumber === currentStep;
+        const accent = isCompleted
+          ? "#4a7bc5" // nina-sky
+          : isActive
+          ? "#1a4b8c" // nina-blue
+          : "rgba(26,75,140,.2)"; // nina-blue/20 — upcoming
         return (
-          <div key={stepNumber} className="flex items-center">
-            <div className="flex flex-col items-center gap-2">
-              <div
-                className={[
-                  "w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300",
-                  isCompleted
-                    ? "bg-nina-sky text-white"
-                    : isActive
-                    ? "bg-nina-blue text-nina-cream ring-2 ring-nina-sky ring-offset-2"
-                    : "bg-white border-2 border-nina-blue/20 text-nina-blue/40",
-                ].join(" ")}
-                aria-current={isActive ? "step" : undefined}
-              >
-                {isCompleted ? (
-                  <svg viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4" aria-hidden="true">
-                    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z" />
-                  </svg>
-                ) : (
-                  stepNumber
-                )}
-              </div>
+          <div key={stepNumber} className="flex items-start">
+            <div className="flex flex-col items-center gap-3">
+              {/* Step marker — a simple dot, no numbered badge */}
+              <span className="flex h-2.5 items-center" aria-hidden="true">
+                <span
+                  className="block rounded-full transition-[width,height,background-color] duration-300"
+                  style={{
+                    width: isActive ? 9 : 6,
+                    height: isActive ? 9 : 6,
+                    backgroundColor: accent,
+                  }}
+                />
+              </span>
+              {/* Label — eyebrow-style, hidden on the smallest screens */}
               <span
-                className={[
-                  "text-xs tracking-wide hidden sm:block",
-                  isActive ? "text-nina-blue font-semibold" : "text-nina-blue/40",
-                ].join(" ")}
+                className="hidden sm:block font-sans text-[11px] uppercase tracking-[.18em] whitespace-nowrap transition-colors duration-300"
+                style={{ color: accent, fontWeight: isActive ? 600 : 500 }}
+                aria-current={isActive ? "step" : undefined}
               >
                 {label}
               </span>
             </div>
             {index < STEP_LABELS.length - 1 && (
-              <div
-                className={[
-                  "h-px w-12 sm:w-16 mx-1 mb-5 transition-all duration-300",
-                  isCompleted ? "bg-nina-sky" : "bg-nina-blue/15",
-                ].join(" ")}
+              <span
+                className="mt-[4px] h-px w-10 sm:w-16 transition-colors duration-300"
+                style={{
+                  backgroundColor: isCompleted
+                    ? "#4a7bc5" // nina-sky for the completed leg
+                    : "rgba(26,75,140,.16)", // hairline
+                }}
                 aria-hidden="true"
               />
             )}
