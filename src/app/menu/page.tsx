@@ -1,8 +1,4 @@
-import { menuCategories } from "@/data/menu";
-
-function formatBD(price: number): string {
-  return "BD " + price.toFixed(3);
-}
+import Image from "next/image";
 
 export default function MenuPage() {
   return (
@@ -22,48 +18,17 @@ export default function MenuPage() {
         </div>
       </section>
 
-      {/* Full Menu */}
-      <section className="py-24 md:py-28 lg:py-32 olive-bl olive-v3">
-        <div className="max-w-[1140px] mx-auto px-6 relative">
-          <div className="space-y-20 md:space-y-24">
-            {menuCategories.map((category) => (
-              <div key={category.slug}>
-                {/* Category Heading */}
-                <div className="text-center mb-10 md:mb-12">
-                  <h2 className="font-serif text-3xl md:text-4xl font-medium text-nina-blue">
-                    {category.name}
-                  </h2>
-                  <div className="meander-rule mt-6 max-w-[120px] mx-auto" />
-                </div>
-
-                {/* Items */}
-                <div className="max-w-2xl mx-auto space-y-7">
-                  {category.items.map((item) => (
-                    <div key={item.name}>
-                      <div className="flex items-baseline gap-3">
-                        <h3 className="font-serif text-xl md:text-2xl font-medium text-nina-blue leading-snug">
-                          {item.name}
-                        </h3>
-                        <span
-                          aria-hidden="true"
-                          className="flex-1 border-b border-dotted border-nina-blue/25 min-w-[1.5rem] translate-y-[-3px]"
-                        />
-                        <span className="shrink-0 font-sans text-sm tracking-wider text-nina-sky tabular-nums">
-                          {formatBD(item.price)}
-                        </span>
-                      </div>
-                      {item.description && (
-                        <p className="font-serif italic text-nina-body text-sm md:text-base mt-1 leading-relaxed max-w-prose">
-                          {item.description}
-                        </p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* Full Menu Image */}
+      <section className="bg-nina-cream pb-24 md:pb-28 lg:pb-32">
+        <Image
+          src="/assets/menu-page-1.png"
+          alt="Nina The Greek full menu"
+          width={3491}
+          height={2522}
+          sizes="100vw"
+          className="block w-full h-auto"
+          priority
+        />
       </section>
     </main>
   );

@@ -18,6 +18,12 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  // Transparent-over-hero treatment only applies on the homepage (dark hero).
+  // Every other page starts on a light background, so the header is shown in
+  // its solid blurred-cream state immediately — keeping the nav visible.
+  const isHome = pathname === "/";
+  const solid = scrolled || !isHome;
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 80);
@@ -31,7 +37,7 @@ export default function Header() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300"
       style={
-        scrolled
+        solid
           ? {
               backgroundColor: "rgba(250,248,245,.94)",
               backdropFilter: "blur(10px)",
@@ -47,7 +53,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <Image
-            src={scrolled ? "/assets/mark-blue.png" : "/assets/mark-cream.png"}
+            src={solid ? "/assets/mark-blue.png" : "/assets/mark-cream.png"}
             alt="Nina The Greek medallion"
             width={36}
             height={36}
@@ -55,7 +61,7 @@ export default function Header() {
           />
           <span
             className={`font-serif text-xl md:text-2xl tracking-wide transition-colors duration-300 ${
-              scrolled ? "text-nina-blue" : "text-nina-cream"
+              solid ? "text-nina-blue" : "text-nina-cream"
             }`}
           >
             nina the greek
@@ -77,7 +83,7 @@ export default function Header() {
                     fontSize: "11px",
                     letterSpacing: "0.18em",
                     textTransform: "uppercase" as const,
-                    color: scrolled
+                    color: solid
                       ? isActive
                         ? "#4a7bc5"
                         : "#1a4b8c"
@@ -86,12 +92,12 @@ export default function Header() {
                         : "#faf8f5",
                   }}
                   onMouseEnter={(e) => {
-                    (e.target as HTMLElement).style.color = scrolled
+                    (e.target as HTMLElement).style.color = solid
                       ? "#4a7bc5"
                       : "#ffffff";
                   }}
                   onMouseLeave={(e) => {
-                    (e.target as HTMLElement).style.color = scrolled
+                    (e.target as HTMLElement).style.color = solid
                       ? isActive
                         ? "#4a7bc5"
                         : "#1a4b8c"
@@ -120,7 +126,7 @@ export default function Header() {
               mobileOpen ? "translate-y-2 rotate-45" : ""
             }`}
             style={{
-              backgroundColor: scrolled || mobileOpen ? "#1a4b8c" : "#faf8f5",
+              backgroundColor: solid || mobileOpen ? "#1a4b8c" : "#faf8f5",
             }}
           />
           <span
@@ -128,7 +134,7 @@ export default function Header() {
               mobileOpen ? "opacity-0" : ""
             }`}
             style={{
-              backgroundColor: scrolled || mobileOpen ? "#1a4b8c" : "#faf8f5",
+              backgroundColor: solid || mobileOpen ? "#1a4b8c" : "#faf8f5",
             }}
           />
           <span
@@ -136,7 +142,7 @@ export default function Header() {
               mobileOpen ? "-translate-y-2 -rotate-45" : ""
             }`}
             style={{
-              backgroundColor: scrolled || mobileOpen ? "#1a4b8c" : "#faf8f5",
+              backgroundColor: solid || mobileOpen ? "#1a4b8c" : "#faf8f5",
             }}
           />
         </button>
