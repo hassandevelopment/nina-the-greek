@@ -31,8 +31,8 @@ export default function MenuPage() {
   return (
     <main>
       {/* Page Header */}
-      <section className="bg-nina-cream py-24 md:py-28 lg:py-32">
-        <div className="max-w-[1140px] mx-auto px-6 text-center">
+      <section className="bg-nina-cream py-24 md:py-28 lg:py-32 olive-tr olive-v2">
+        <div className="max-w-[1140px] mx-auto px-6 text-center relative">
           <p className="font-sans text-xs tracking-[.4em] uppercase text-nina-sky mb-4">
             Nina The Greek
           </p>
@@ -46,8 +46,8 @@ export default function MenuPage() {
       </section>
 
       {/* Menu Content */}
-      <section className="py-24 md:py-28 lg:py-32">
-        <div className="max-w-[1140px] mx-auto px-6">
+      <section className="py-24 md:py-28 lg:py-32 olive-bl olive-v3">
+        <div className="max-w-[1140px] mx-auto px-6 relative">
           {/* Category Tabs */}
           <div
             ref={tabsRef}

@@ -60,16 +60,7 @@ export default function Home() {
       </section>
 
       {/* ── The Menu ── */}
-      <section className="bg-nina-navy text-nina-cream pt-24 md:pt-28 pb-24 md:pb-28">
-        <div className="container-narrow">
-          <div className="text-center mb-12 md:mb-14">
-            <p className="eyebrow !text-nina-muted mb-4">The Menu</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-nina-cream">
-              Explore Our Offerings
-            </h2>
-          </div>
-        </div>
-
+      <section className="bg-nina-cream pt-24 md:pt-28 pb-24 md:pb-28">
         <Image
           src="/assets/menu-page-1.png"
           alt="Nina The Greek menu"
@@ -84,7 +75,7 @@ export default function Home() {
           <div className="text-center mt-12 md:mt-14">
             <Link
               href="/menu"
-              className="inline-block font-serif text-nina-cream/80 hover:text-nina-cream transition-opacity text-lg"
+              className="inline-block font-serif text-nina-blue/80 hover:text-nina-blue transition-opacity text-lg"
             >
               Explore the Full Menu &rarr;
             </Link>
@@ -93,8 +84,8 @@ export default function Home() {
       </section>
 
       {/* ── Private Events ── */}
-      <section className="section-padding bg-nina-cream">
-        <div className="container-narrow">
+      <section className="section-padding bg-nina-cream olive-tr olive-v3">
+        <div className="container-narrow relative">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Image */}
             <div className="relative aspect-[4/3] overflow-hidden">
@@ -136,8 +127,8 @@ export default function Home() {
       </section>
 
       {/* ── Visit ── */}
-      <section className="section-padding bg-white">
-        <div className="container-narrow max-w-4xl">
+      <section className="section-padding bg-white olive-tl olive-v2">
+        <div className="container-narrow max-w-4xl relative">
           <div className="text-center mb-12">
             <p className="eyebrow mb-4">Visit Us</p>
             <h2 className="font-serif text-3xl md:text-4xl font-light text-nina-blue">

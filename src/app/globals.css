@@ -96,6 +96,108 @@ body {
   opacity: 0.5;
 }
 
+/* ── Olive branch decorations ──
+   Hand-painted watercolor branches extracted from the menu artwork, used as
+   subtle corner watermarks on light (cream/sand/white) sections.
+   Placement is split across ::before (olive-*) and ::after (olive-*-2) so a
+   section can carry two branches AND still coexist with a meander-bottom
+   (which itself uses ::after on .meander-bottom* but never together with the
+   -2 variants here). */
+.olive-tl, .olive-tr, .olive-bl, .olive-br,
+.olive-tl-2, .olive-tr-2, .olive-bl-2, .olive-br-2 {
+  position: relative;
+}
+
+.olive-tl::before, .olive-tr::before, .olive-bl::before, .olive-br::before,
+.olive-tl-2::after, .olive-tr-2::after, .olive-bl-2::after, .olive-br-2::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  width: clamp(110px, 13vw, 190px);
+  height: clamp(110px, 13vw, 190px);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.14;
+}
+
+/* ::before branch — defaults to branch 1, override with a variant class */
+.olive-tl::before, .olive-tr::before, .olive-bl::before, .olive-br::before {
+  background-image: var(--olive, url(/assets/olive-branch-1.png));
+}
+.olive-v2 {
+  --olive: url(/assets/olive-branch-2.png);
+}
+.olive-v3 {
+  --olive: url(/assets/olive-branch-3.png);
+}
+
+/* ::after branch — fixed per corner, used for opposing-corner pairings */
+.olive-tl-2::after {
+  background-image: url(/assets/olive-branch-2.png);
+}
+.olive-tr-2::after {
+  background-image: url(/assets/olive-branch-3.png);
+}
+.olive-bl-2::after {
+  background-image: url(/assets/olive-branch-1.png);
+}
+.olive-br-2::after {
+  background-image: url(/assets/olive-branch-2.png);
+}
+
+/* Corner placement + orientation (mirror/flip a branch for variety;
+   slight negative offset lets it bleed gently off the section edge) */
+.olive-tl::before {
+  top: -16px;
+  left: -24px;
+  transform: rotate(6deg);
+}
+.olive-tr::before {
+  top: -16px;
+  right: -24px;
+  transform: scaleX(-1) rotate(6deg);
+}
+.olive-bl::before {
+  bottom: -16px;
+  left: -24px;
+  transform: scaleY(-1) rotate(6deg);
+}
+.olive-br::before {
+  bottom: -16px;
+  right: -24px;
+  transform: scale(-1, -1) rotate(6deg);
+}
+.olive-tl-2::after {
+  top: -16px;
+  left: -24px;
+  transform: rotate(-7deg);
+}
+.olive-tr-2::after {
+  top: -16px;
+  right: -24px;
+  transform: scaleX(-1) rotate(-7deg);
+}
+.olive-bl-2::after {
+  bottom: -16px;
+  left: -24px;
+  transform: scaleY(-1) rotate(-7deg);
+}
+.olive-br-2::after {
+  bottom: -16px;
+  right: -24px;
+  transform: scale(-1, -1) rotate(-7deg);
+}
+
+/* Keep decorations from crowding content on small screens */
+@media (max-width: 640px) {
+  .olive-tl::before, .olive-tr::before, .olive-bl::before, .olive-br::before,
+  .olive-tl-2::after, .olive-tr-2::after, .olive-bl-2::after, .olive-br-2::after {
+    display: none;
+  }
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;

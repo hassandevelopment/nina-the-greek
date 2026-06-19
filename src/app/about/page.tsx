@@ -49,8 +49,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── Restaurant Story ── */}
-      <section className="section-padding bg-nina-cream">
-        <div className="container-narrow max-w-3xl">
+      <section className="section-padding bg-nina-cream olive-bl">
+        <div className="container-narrow max-w-3xl relative">
           <div className="space-y-6 font-serif text-lg md:text-xl leading-[1.7] text-nina-body">
             <p>
               Nina The Greek is an authentic Greek and Mediterranean restaurant
@@ -95,8 +95,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── Meet the Chef ── */}
-      <section className="section-padding bg-nina-sand">
-        <div className="container-narrow max-w-4xl">
+      <section className="section-padding bg-nina-sand olive-tr olive-v3">
+        <div className="container-narrow max-w-4xl relative">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Photo placeholder */}
             <div className="aspect-[3/4] bg-nina-blue/10 flex items-center justify-center">
@@ -136,8 +136,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── Values ── */}
-      <section className="meander-bottom section-padding bg-white">
-        <div className="container-narrow max-w-4xl">
+      <section className="meander-bottom section-padding bg-white olive-tl olive-v2">
+        <div className="container-narrow max-w-4xl relative">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {values.map((value) => (
               <div key={value.title} className="text-center">
