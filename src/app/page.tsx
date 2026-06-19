@@ -59,30 +59,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── The Menu ── */}
-      <section className="bg-nina-cream pt-24 md:pt-28 pb-24 md:pb-28">
-        <Image
-          src="/assets/menu-page-1.png"
-          alt="Nina The Greek menu"
-          width={3491}
-          height={2522}
-          sizes="100vw"
-          className="block w-full h-auto"
-          priority={false}
-        />
-
-        <div className="container-narrow">
-          <div className="text-center mt-12 md:mt-14">
-            <Link
-              href="/menu"
-              className="inline-block font-serif text-nina-blue/80 hover:text-nina-blue transition-opacity text-lg"
-            >
-              Explore the Full Menu &rarr;
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ── Private Events ── */}
       <section className="section-padding bg-nina-cream olive-tr olive-v3">
         <div className="container-narrow relative">

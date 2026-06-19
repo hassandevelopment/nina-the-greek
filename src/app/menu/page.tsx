@@ -1,6 +1,3 @@
-"use client";
-
-import { useState, useRef, useEffect } from "react";
 import { menuCategories } from "@/data/menu";
 
 function formatBD(price: number): string {
@@ -8,26 +5,6 @@ function formatBD(price: number): string {
 }
 
 export default function MenuPage() {
-  const [activeCategory, setActiveCategory] = useState(
-    menuCategories[0].slug
-  );
-  const tabsRef = useRef<HTMLDivElement>(null);
-  const activeTabRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (activeTabRef.current && tabsRef.current) {
-      const container = tabsRef.current;
-      const tab = activeTabRef.current;
-      const scrollLeft =
-        tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
-      container.scrollTo({ left: scrollLeft, behavior: "smooth" });
-    }
-  }, [activeCategory]);
-
-  const activeCategoryData = menuCategories.find(
-    (c) => c.slug === activeCategory
-  );
-
   return (
     <main>
       {/* Page Header */}
@@ -45,67 +22,47 @@ export default function MenuPage() {
         </div>
       </section>
 
-      {/* Menu Content */}
+      {/* Full Menu */}
       <section className="py-24 md:py-28 lg:py-32 olive-bl olive-v3">
         <div className="max-w-[1140px] mx-auto px-6 relative">
-          {/* Category Tabs */}
-          <div
-            ref={tabsRef}
-            className="flex gap-2 overflow-x-auto pb-2 mb-10 -mx-1.5 px-1.5"
-            style={{
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
-            }}
-          >
-            {menuCategories.map((category) => {
-              const isActive = category.slug === activeCategory;
-              return (
-                <button
-                  key={category.slug}
-                  ref={isActive ? activeTabRef : null}
-                  onClick={() => setActiveCategory(category.slug)}
-                  className={`
-                    shrink-0 px-5 py-2.5 text-sm font-medium
-                    transition-colors duration-200 cursor-pointer
-                    ${
-                      isActive
-                        ? "bg-nina-blue text-nina-cream"
-                        : "bg-white text-nina-body border border-nina-blue/16 hover:border-nina-blue/30 hover:bg-nina-blue/5"
-                    }
-                  `}
-                >
-                  {category.name}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Menu Items */}
-          {activeCategoryData && (
-            <div className="space-y-3">
-              {activeCategoryData.items.map((item) => (
-                <div
-                  key={item.name}
-                  className="group flex items-start justify-between gap-4 bg-white px-5 py-4 border hover:shadow-sm transition-colors duration-200"
-                  style={{ borderColor: "rgba(26,75,140,.16)" }}
-                >
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-serif text-lg font-medium text-nina-blue leading-snug">
-                      {item.name}
-                    </h3>
-                    {item.description && (
-                      <p className="font-serif italic text-nina-body text-sm mt-1 leading-relaxed">
-                        {item.description}
-                      </p>
-                    )}
-                  </div>
-                  <span className="shrink-0 font-sans text-sm tracking-wider text-nina-sky mt-0.5 tabular-nums">
-                    {formatBD(item.price)}
-                  </span>
+          <div className="space-y-20 md:space-y-24">
+            {menuCategories.map((category) => (
+              <div key={category.slug}>
+                {/* Category Heading */}
+                <div className="text-center mb-10 md:mb-12">
+                  <h2 className="font-serif text-3xl md:text-4xl font-medium text-nina-blue">
+                    {category.name}
+                  </h2>
+                  <div className="meander-rule mt-6 max-w-[120px] mx-auto" />
                 </div>
-              ))}
-            </div>
-          )}
+
+                {/* Items */}
+                <div className="max-w-2xl mx-auto space-y-7">
+                  {category.items.map((item) => (
+                    <div key={item.name}>
+                      <div className="flex items-baseline gap-3">
+                        <h3 className="font-serif text-xl md:text-2xl font-medium text-nina-blue leading-snug">
+                          {item.name}
+                        </h3>
+                        <span
+                          aria-hidden="true"
+                          className="flex-1 border-b border-dotted border-nina-blue/25 min-w-[1.5rem] translate-y-[-3px]"
+                        />
+                        <span className="shrink-0 font-sans text-sm tracking-wider text-nina-sky tabular-nums">
+                          {formatBD(item.price)}
+                        </span>
+                      </div>
+                      {item.description && (
+                        <p className="font-serif italic text-nina-body text-sm md:text-base mt-1 leading-relaxed max-w-prose">
+                          {item.description}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </main>
