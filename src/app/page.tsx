@@ -103,38 +103,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Welcome / Philoxenia ── */}
-      <section className="section-padding bg-nina-cream">
-        <div className="container-narrow max-w-3xl text-center">
-          <p className="eyebrow mb-6">Welcome</p>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] font-light leading-snug mb-10 text-nina-blue">
-            Where every meal is a celebration of Greek tradition, crafted with
-            passion and served with philoxenia.
-          </h2>
-          <div className="space-y-6 text-base md:text-lg leading-[1.7] text-nina-body">
-            <p>
-              Nina The Greek is an authentic Greek and Mediterranean restaurant
-              in Bahrain, bringing the flavors, hospitality, and charm of Greece
-              to the heart of the Kingdom.
-            </p>
-            <p>
-              Inspired by traditional Greek cuisine and coastal Mediterranean
-              dining, we offer a carefully curated menu featuring fresh seafood,
-              premium meats, handcrafted starters, homemade pita, signature
-              salads, and indulgent desserts.
-            </p>
-          </div>
-          <div className="mt-10">
-            <Link
-              href="/about"
-              className="inline-block font-serif text-nina-blue hover:text-nina-navy transition-opacity text-lg"
-            >
-              Our Story &rarr;
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ── Signature Dishes ── */}
       <section className="meander-bottom section-padding bg-nina-sand">
         <div className="container-narrow">
