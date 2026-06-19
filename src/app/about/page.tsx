@@ -136,7 +136,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Values ── */}
-      <section className="meander-bottom section-padding bg-white olive-tl olive-v2">
+      <section className="section-padding bg-white olive-tl olive-v2">
         <div className="container-narrow max-w-4xl relative">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {values.map((value) => (
@@ -149,62 +149,6 @@ export default function AboutPage() {
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Contact ── */}
-      <section className="section-padding bg-nina-navy text-nina-cream">
-        <div className="container-narrow max-w-3xl text-center">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
-            <div>
-              <h3 className="font-sans text-xs uppercase tracking-[.3em] text-nina-muted mb-4">
-                Location
-              </h3>
-              <p className="font-serif text-nina-cream/90 leading-relaxed">
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Nina%20The%20Greek%2C%20Avenue%2057%2C%20Maqabah%2C%20Saar%2C%20Bahrain"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-nina-cream transition-colors"
-                >
-                  Avenue 57, Maqabah
-                  <br />
-                  Saar, Kingdom of Bahrain
-                </a>
-              </p>
-            </div>
-            <div>
-              <h3 className="font-sans text-xs uppercase tracking-[.3em] text-nina-muted mb-4">
-                Hours
-              </h3>
-              <p className="font-serif text-nina-cream/90 leading-relaxed">
-                Open Daily
-                <br />
-                3:00 PM &ndash; 11:00 PM
-              </p>
-            </div>
-            <div>
-              <h3 className="font-sans text-xs uppercase tracking-[.3em] text-nina-muted mb-4">
-                Connect
-              </h3>
-              <p className="font-serif text-nina-cream/90 leading-relaxed">
-                <a
-                  href="tel:+97317322777"
-                  className="hover:text-nina-cream transition-opacity block"
-                >
-                  1732 2777
-                </a>
-                <a
-                  href="https://www.instagram.com/nina_the_greek/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-nina-cream transition-opacity block mt-1"
-                >
-                  @nina_the_greek
-                </a>
-              </p>
-            </div>
           </div>
         </div>
       </section>
