@@ -162,9 +162,16 @@ export default function AboutPage() {
                 Location
               </h3>
               <p className="font-serif text-nina-cream/90 leading-relaxed">
-                Avenue 57, Maqabah
-                <br />
-                Saar, Kingdom of Bahrain
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Nina%20The%20Greek%2C%20Avenue%2057%2C%20Maqabah%2C%20Saar%2C%20Bahrain"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-nina-cream transition-colors"
+                >
+                  Avenue 57, Maqabah
+                  <br />
+                  Saar, Kingdom of Bahrain
+                </a>
               </p>
             </div>
             <div>

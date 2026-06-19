@@ -129,11 +129,33 @@ export default function Home() {
                   <h3 className="font-sans text-xs uppercase tracking-[.3em] text-nina-muted mb-3">
                     Address
                   </h3>
-                  <p className="font-serif text-nina-cream/90 leading-relaxed">
-                    Avenue 57, Maqabah
-                    <br />
-                    Saar, Kingdom of Bahrain
-                  </p>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Nina%20The%20Greek%2C%20Avenue%2057%2C%20Maqabah%2C%20Saar%2C%20Bahrain"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex flex-col items-center"
+                  >
+                    <p className="font-serif text-nina-cream/90 leading-relaxed group-hover:text-nina-cream transition-colors">
+                      Avenue 57, Maqabah
+                      <br />
+                      Saar, Kingdom of Bahrain
+                    </p>
+                    <span className="mt-2 inline-flex items-center gap-1.5 font-sans text-[11px] uppercase tracking-[.2em] text-nina-muted group-hover:text-nina-cream transition-colors">
+                      Get Directions
+                      <svg
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-3 h-3"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5 10a.75.75 0 0 1 .75-.75h6.638L9.97 6.78a.75.75 0 0 1 1.06-1.06l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.418-2.47H5.75A.75.75 0 0 1 5 10z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                  </a>
                 </div>
                 <div>
                   <h3 className="font-sans text-xs uppercase tracking-[.3em] text-nina-muted mb-3">

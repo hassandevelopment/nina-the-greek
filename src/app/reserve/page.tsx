@@ -265,9 +265,26 @@ export default function BookPage() {
                   Visit Us
                 </p>
                 <p className="text-nina-blue font-medium">Nina The Greek</p>
-                <p className="text-nina-body text-sm mt-1">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Nina%20The%20Greek%2C%20Avenue%2057%2C%20Maqabah%2C%20Saar%2C%20Bahrain"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-nina-body text-sm mt-1 hover:text-nina-sky transition-colors"
+                >
                   Avenue 57, Maqabah, Bahrain
-                </p>
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-3 h-3"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5 10a.75.75 0 0 1 .75-.75h6.638L9.97 6.78a.75.75 0 0 1 1.06-1.06l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.418-2.47H5.75A.75.75 0 0 1 5 10z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </a>
               </div>
 
               {/* Hours */}

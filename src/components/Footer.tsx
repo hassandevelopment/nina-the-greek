@@ -86,9 +86,16 @@ export default function Footer() {
               Location
             </p>
             <address className="not-italic font-serif text-lg leading-relaxed text-nina-cream">
-              Avenue 57, Maqabah
-              <br />
-              Saar, Bahrain
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Nina%20The%20Greek%2C%20Avenue%2057%2C%20Maqabah%2C%20Saar%2C%20Bahrain"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-nina-muted transition-colors"
+              >
+                Avenue 57, Maqabah
+                <br />
+                Saar, Bahrain
+              </a>
             </address>
           </div>
 
