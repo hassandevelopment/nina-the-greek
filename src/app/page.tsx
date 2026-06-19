@@ -49,7 +49,7 @@ export default function Home() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative flex items-center justify-center min-h-screen overflow-hidden">
+      <section className="meander-bottom-cream relative flex items-center justify-center min-h-screen overflow-hidden">
         <Image
           src="/assets/hero-watercolor.png"
           alt=""
@@ -105,7 +105,6 @@ export default function Home() {
 
       {/* ── Welcome / Philoxenia ── */}
       <section className="section-padding bg-nina-cream">
-        <div className="meander-top" />
         <div className="container-narrow max-w-3xl text-center">
           <p className="eyebrow mb-6">Welcome</p>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] font-light leading-snug mb-10 text-nina-blue">
@@ -137,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* ── Signature Dishes ── */}
-      <section className="section-padding bg-nina-sand">
+      <section className="meander-bottom section-padding bg-nina-sand">
         <div className="container-narrow">
           <div className="text-center mb-14">
             <p className="eyebrow mb-4">From Our Kitchen</p>
@@ -177,7 +176,6 @@ export default function Home() {
 
       {/* ── The Menu ── */}
       <section className="section-padding bg-nina-navy text-nina-cream">
-        <div className="meander-top-cream" />
         <div className="container-narrow">
           <div className="text-center mb-14">
             <p className="eyebrow !text-nina-muted mb-4">The Menu</p>

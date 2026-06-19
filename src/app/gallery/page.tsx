@@ -73,7 +73,7 @@ export default function GalleryPage() {
   return (
     <>
       {/* Hero Header */}
-      <section className="bg-nina-cream py-24 md:py-28 lg:py-32">
+      <section className="meander-bottom bg-nina-cream py-24 md:py-28 lg:py-32">
         <div className="max-w-[1140px] mx-auto px-6 text-center">
           <p className="font-sans text-xs tracking-[.4em] uppercase text-nina-sky mb-4">
             Nina The Greek
@@ -88,7 +88,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Section 1: Our Dishes */}
-      <section className="meander-top py-24 md:py-28 lg:py-32">
+      <section className="py-24 md:py-28 lg:py-32">
         <div className="max-w-[1140px] mx-auto px-6">
           <p className="font-sans text-xs tracking-[.4em] uppercase text-nina-sky mb-3">
             From Our Kitchen

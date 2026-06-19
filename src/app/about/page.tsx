@@ -74,7 +74,7 @@ export default function AboutPage() {
 
           {/* Pull quote */}
           <div className="my-14 py-10 border-t border-b border-nina-blue/20">
-            <div className="meander-top" />
+            <div className="meander-rule" />
             <blockquote className="font-serif italic text-2xl md:text-3xl text-nina-blue text-center leading-snug mt-6">
               &ldquo;From our warm hospitality and vibrant atmosphere to our
               handcrafted dishes and artistic interiors, every detail is designed
@@ -136,7 +136,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Values ── */}
-      <section className="section-padding bg-white">
+      <section className="meander-bottom section-padding bg-white">
         <div className="container-narrow max-w-4xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {values.map((value) => (
@@ -155,7 +155,6 @@ export default function AboutPage() {
 
       {/* ── Contact ── */}
       <section className="section-padding bg-nina-navy text-nina-cream">
-        <div className="meander-top-cream" />
         <div className="container-narrow max-w-3xl text-center">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
             <div>

@@ -18,9 +18,9 @@ export default function Footer() {
       <div
         style={{
           background: "url(/assets/meander-cream.png) repeat-x top",
-          backgroundSize: "auto 18px",
-          height: "18px",
-          opacity: 0.3,
+          backgroundSize: "auto 44px",
+          height: "44px",
+          opacity: 0.25,
         }}
       />
 

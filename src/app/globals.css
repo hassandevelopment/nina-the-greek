@@ -57,18 +57,43 @@ body {
   color: #4a7bc5;
 }
 
-.meander-top {
-  background: url(/assets/meander-blue.png) repeat-x top;
-  background-size: auto 18px;
-  padding-top: 36px;
-  opacity: 0.6;
+/* Meander finishing border — sits flush at the bottom edge of a section.
+   Pseudo-element keeps opacity off the section content. */
+.meander-bottom,
+.meander-bottom-cream {
+  position: relative;
 }
 
-.meander-top-cream {
-  background: url(/assets/meander-cream.png) repeat-x top;
-  background-size: auto 18px;
-  padding-top: 36px;
-  opacity: 0.3;
+.meander-bottom::after,
+.meander-bottom-cream::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 44px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: auto 44px;
+  pointer-events: none;
+}
+
+.meander-bottom::after {
+  background-image: url(/assets/meander-blue.png);
+  opacity: 0.5;
+}
+
+.meander-bottom-cream::after {
+  background-image: url(/assets/meander-cream.png);
+  opacity: 0.25;
+}
+
+/* Decorative inline meander rule (e.g. above a pull-quote) */
+.meander-rule {
+  height: 44px;
+  background: url(/assets/meander-blue.png) repeat-x center;
+  background-size: auto 44px;
+  opacity: 0.5;
 }
 
 /* Smooth scrolling */
