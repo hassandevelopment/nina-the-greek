@@ -155,7 +155,7 @@ export default function CareersPage() {
   return (
     <main>
       {/* Hero Header */}
-      <section className="bg-nina-cream py-24 md:py-28 lg:py-32 olive-tr olive-v2">
+      <section className="bg-nina-cream pt-24 md:pt-28 lg:pt-32 pb-8 md:pb-10 olive-tr olive-v2">
         <div className="max-w-[1140px] mx-auto px-6 relative">
           <p className="font-sans text-xs tracking-[.4em] uppercase text-nina-sky mb-4">
             Careers
@@ -172,7 +172,7 @@ export default function CareersPage() {
       </section>
 
       {/* Application Form */}
-      <section className="py-24 md:py-28 lg:py-32 olive-tl olive-v3">
+      <section className="pt-8 md:pt-10 pb-24 md:pb-28 lg:pb-32 olive-tl olive-v3">
         <div className="max-w-[1140px] mx-auto px-6 relative">
           <form
             onSubmit={handleSubmit}

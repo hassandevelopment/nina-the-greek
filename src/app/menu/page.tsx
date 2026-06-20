@@ -23,8 +23,8 @@ export default function MenuPage() {
         <Image
           src="/assets/menu-page-1.png"
           alt="Nina The Greek full menu"
-          width={3491}
-          height={2522}
+          width={3387}
+          height={2417}
           sizes="100vw"
           className="block w-full h-auto"
           priority

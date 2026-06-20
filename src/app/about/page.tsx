@@ -71,17 +71,19 @@ export default function AboutPage() {
               love for Greek culture and tradition.
             </p>
           </div>
+        </div>
 
-          {/* Pull quote */}
-          <div className="my-14 py-10 border-t border-b border-nina-blue/20">
-            <div className="meander-rule" />
-            <blockquote className="font-serif italic text-2xl md:text-3xl text-nina-blue text-center leading-snug mt-6">
-              &ldquo;From our warm hospitality and vibrant atmosphere to our
-              handcrafted dishes and artistic interiors, every detail is designed
-              to transport guests to the Greek islands.&rdquo;
-            </blockquote>
-          </div>
+        {/* Pull quote — full-width divider (meander + hairlines span the section) */}
+        <div className="my-14 py-10 border-t border-b border-nina-blue/20">
+          <div className="meander-rule" />
+          <blockquote className="container-narrow max-w-3xl font-serif italic text-2xl md:text-3xl text-nina-blue text-center leading-snug mt-6">
+            &ldquo;From our warm hospitality and vibrant atmosphere to our
+            handcrafted dishes and artistic interiors, every detail is designed
+            to transport guests to the Greek islands.&rdquo;
+          </blockquote>
+        </div>
 
+        <div className="container-narrow max-w-3xl relative">
           <div className="space-y-6 font-serif text-lg md:text-xl leading-[1.7] text-nina-body">
             <p>
               Our kitchen is led by a team passionate about honoring authentic

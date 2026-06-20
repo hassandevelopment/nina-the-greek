@@ -793,7 +793,7 @@ export default function PrivateEventsPage() {
     <main className="min-h-screen py-20 px-4 olive-tr olive-v2 olive-bl-2">
       <div className="max-w-2xl mx-auto relative">
         {/* Page Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-8">
           <p className="font-sans text-xs tracking-[.4em] uppercase text-nina-sky mb-4">
             Nina The Greek
           </p>
